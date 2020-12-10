@@ -1,17 +1,18 @@
 const { Connection, Request } = require("tedious");
+require('dotenv').config();
 
-// Create connection to database
+// Create connection to database using environment variables
 const config = {
     authentication: {
         options: {
-            userName: "evan",
-            password: "5291Ev!n"
+            userName: process.env.USERNAME,
+            password: process.env.PASSWORD
         },
         type: "default"
     },
-    server: "umkc-cs470.database.windows.net", // update me
+    server: process.env.SERVER,
     options: {
-        database: "cs470", //update me
+        database: process.env.DB,
         encrypt: true
     }
 };
