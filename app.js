@@ -74,6 +74,17 @@ app.get('/tests', (req, res) => {
     });
 });
 
+// Get patient tests
+app.get('/patient/tests/:patientId', function (req, res) {
+    sql.connect(config, () => {
+        const request = new sql.Request();
+        request.input('PatientID', req.params.patientId);
+        request.execute('dbo.get_first_last_tests_by_patient', (err, data, returnValue, affected) => {
+            send(res, data, err);
+        });
+    });
+})
+
 // Get patient history
 app.get('/patient/history/:patientId', function (req, res) {
     sql.connect(sqlConfig, () => {
