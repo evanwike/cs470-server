@@ -1,3 +1,4 @@
+// Replace <values> with your Azure SQL Server login credentials
 const config = {
   "db": {
     "user": "<username>",
